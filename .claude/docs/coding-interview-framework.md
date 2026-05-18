@@ -1,4 +1,4 @@
-# Coding Interview Frameworkhttps://codeshare.io/5eNqmb
+# Coding Interview Framework
 
 面接官と議論しながら使う6ステップのフレームワーク。
 
