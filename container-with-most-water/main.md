@@ -19,10 +19,11 @@ Constraints:
 - 0 <= height[i] <= 10^4
 
 Approach
-
-わからない....
+色々考えたがわからなかった
 Two Pointerらしいというヒントを見て思いついた
 
+Time: O(N)
+Space: O(1)
 ```py
 class Solution:
     def maxArea(self, height: List[int]) -> int:
@@ -41,7 +42,7 @@ class Solution:
         return max_area
 ```
 
-インデックスrightを順番に舐めるとして、各rightに対して`height[left] >= height[right]`を満たす最も左のleftを見つけて`(right - left) * height[right]`を計算する。対称に各leftについて、`height[right] >= height[left]`を満たす最も右のrightを見つけて`(right - left) * height[left]`を計算。両者の最大を取るという方法が思いついた。こっちの方が素直そう
+インデックスrightを順番に舐めるとして、各rightに対して`height[left] >= height[right]`を満たす最も左のleftを見つけて`(right - left) * height[right]`を計算する。対称に各leftについて、`height[right] >= height[left]`を満たす最も右のrightを見つけて`(right - left) * height[left]`を計算。両者の最大を取るという方法も思いついた。こっちの方が素直そう
 
 単調スタック+二分探索で実装できるらしい
 - 自分より大きい最も端にあるインデックスを見つけるためにあらかじめ記録配列を作っておくことを考える
@@ -52,6 +53,7 @@ class Solution:
 `prefix_max`に対して、「right以上である一番左のインデックス」を求めるには, `prefix max`の中で、高さが`height[right]`以上となる最初の要素を二分探索すれば良い。Pythonであれば`bisect_left`でかける
 
 Time: O(Nlog N)
+Space: O(N)
 ```py
 class Solution:
     def maxArea(self, height: List[int]) -> int:
@@ -182,9 +184,22 @@ class Solution:
         return max_area
 ```
 
-
 ## 練習
 ```py
-
-
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left = 0
+        right = len(height) - 1
+        max_area = 0
+        while left < right:
+            if height[left] < height[right]:
+                max_area = max(max_area, height[left] * (right - left))
+                left += 1
+            else:
+                max_area = max(max_area, height[right] * (right - left))
+                right -= 1
+        
+        return max_area
 ```
+
+- left_wall, right_wallの方がいいか
