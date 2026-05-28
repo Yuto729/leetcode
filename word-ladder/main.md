@@ -61,6 +61,8 @@ Runtimeは8000ms超え. 平均より1 ~ 2桁ほど遅いので計算量を1/100 
 - 上記の実装 => 各単語について現在の単語と1文字違いのものを探す => O(N * 10)
 - 発想を転換して, 現在の単語について1文字を別のアルファベットに変えた単語がwordListの中にあるか？を調べる => O(M * 26), M: 各単語の長さ (最大10). 単語を調べるときにsetを用いる.
 
+トータルの時間計算量：O((N + N × 26 × L) × L) = O(N * L^2)、空間計算量：O(N * L)
+
 - 上記のコードで根からの深さの意図で`height`と命名していたが, `distance`や`depth`のほうが良さそう
 ```py
 class Solution:
@@ -87,6 +89,41 @@ class Solution:
 
                     frontiers.append((candidate, distance + 1))
                     visited.add(candidate)
+            
+        return 0
+```
+
+追記
+- 以下のようにレベル別に処理するとqueueに距離を入れなくて良くなる
+```py
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        def generate_neighbors(word):
+            for i in range(len(word)):
+                for c in string.ascii_lowercase:
+                    candidate = word[:i] + c + word[i + 1: ]
+                    yield candidate
+
+        word_set = set(wordList)
+        if endWord not in word_set:
+            return 0
+
+        queue = [beginWord]
+        visited = set()
+        num_of_words = 1
+        while queue:
+            next_level = []
+            for word in queue:
+                if word == endWord:
+                    return num_of_words
+
+                for candidate in generate_neighbors(word):
+                    if candidate not in visited and candidate in word_set:
+                        next_level.append(candidate)
+                        visited.add(candidate)
+
+            queue = next_level
+            num_of_words += 1
             
         return 0
 ```
