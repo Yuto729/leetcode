@@ -245,3 +245,20 @@ class Solution:
             
         return left
 ```
+
+## 追記
+`continue`を使うと`total_weight = weight`と`total_weight += weight`の2箇所に代入が分散し、`continue`を消すと二重加算のバグになる。
+
+「新しい日になったらリセットして、常に加算」と考えると代入を1箇所に統一できる。
+
+```py
+def can_be_shipped(capacity, days):
+    total_weight = 0
+    num_days = 1
+    for weight in weights:
+        if total_weight + weight > capacity:
+            num_days += 1
+            total_weight = 0
+        total_weight += weight
+    return num_days <= days
+```
