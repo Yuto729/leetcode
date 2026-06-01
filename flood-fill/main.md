@@ -169,9 +169,35 @@ class Solution:
 `is_in_bounds` などに切り出すとループ内がすっきり
 
 ## Step3
+- `if color_to_replace == color:`を忘れずに
+    - visitedを使うDFSと違って、「色が変わったか」で訪問済みを判定しているので、色が変わらないケースでDFSが破綻する
+    
 ```py
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        m, n = len(image), len(image[0])
+        color_to_replace = image[sr][sc]
+        if color_to_replace == color:
+            return image
 
-
+        image[sr][sc] = color
+        stack = [(sr, sc)]
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        while stack:
+            r, c = stack.pop()
+            for dr, dc in directions:
+                new_r = r + dr
+                new_c = c + dc
+                if not (0 <= new_r < m and 0 <= new_c < n):
+                    continue
+                
+                if image[new_r][new_c] != color_to_replace:
+                    continue
+                
+                image[new_r][new_c] = color
+                stack.append((new_r, new_c))
+        
+        return image
 ```
 
 ## 類題
