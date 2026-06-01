@@ -247,7 +247,7 @@ class Solution:
 
 ### 入力を破壊しない
 
-[nodchip — ryosuketc#26](https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2541466847)
+https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2541466847
 
 > 入力を変更している点が気になりました。呼び出し側の視点に立って考えると、関数に渡した値が勝手に書き換えられているとびっくりすると思います。入力は原則変更しないか、変更する場合は関数コメントでそれを明記することをおすすめします。
 
@@ -255,7 +255,7 @@ class Solution:
 
 ### 高次概念と低次操作の距離を縮める — 関数分割
 
-[oda — ryosuketc#26](https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2541466847)
+https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2541466847
 
 > 「2つのインターバルを引数に取って被ってるかを判定する関数」作りませんか。で、次に「2つのインターバルをくっつける関数」です。この2つあればできませんか。
 
@@ -275,7 +275,7 @@ while i < len(intervals) and overlaps(intervals[i], newInterval):
 
 ### 複数人でシフトを組めるか
 
-[oda — ryosuketc#26](https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2548502413)
+https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2548502413
 
 > 発想のときに「手でできるか」の後に「複数人でシフトを組んでできるか」という話をしています。
 >
@@ -288,7 +288,7 @@ while i < len(intervals) and overlaps(intervals[i], newInterval):
 
 ### `mergeIntervals(intervals1, intervals2)` への一般化
 
-[oda — ryosuketc#26](https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2548502413)
+https://github.com/ryosuketc/leetcode_grind75/pull/26#discussion_r2548502413
 
 > intervals1 と intervals2 という2つのティッシュボックスがあって、全部のテッシュをマージしたいです。intervals2 には newInterval と書かれたティッシュだけ入れればいいです。
 
@@ -370,7 +370,7 @@ def merge_k_interval_lists(lists: List[List[List[int]]]) -> List[List[int]]:
 
 ### 位置に意味を持たせるなら tuple
 
-[huyfififi#26 本人コメント](https://github.com/huyfififi/coding-challenges/pull/26)
+[huyfififi#26](https://github.com/huyfififi/coding-challenges/pull/26)
 
 > 位置が意味を持つことがコメントなどで明確に共有されていれば良いのだが、`intervals[i][0]`がi番目の区間の始まりを表していて、`intervals[i][1]`がi番目の区間の終わりを表していることが少しわかりづらく感じる。(位置に意味を持たせるなら、immutableな`tuple`の方が使われている印象。)
 
