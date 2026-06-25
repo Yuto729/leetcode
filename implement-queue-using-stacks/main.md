@@ -153,7 +153,6 @@ AIレビュー
 
 - `len(self.reversed_items) == 0`より`not self.reversed...`の方がPythonらしい
 - 空のときにNoneを返す設計について、例外を投げる方が早く失敗する設計としていいのでは？
-  - バグをなるべく早めに潰す関数契約として良さそう？
 
 - 変数名/メソッド名
   - items -> 中身が要素であることしか言っていない
@@ -254,14 +253,49 @@ def peek(self) -> int:
 
 ---
 
-### 過去に解いた類題（本リポジトリ内）
-
-- [implement-stack-using-queues](../implement-stack-using-queues/main.md) ※存在すれば（本問の逆操作）
-- [min-stack](../min-stack/main.md) ※スタックの設計問題
-- [kth-largest-element-in-a-stream](../kth-largest-element-in-a-stream/main.md) ※データ構造設計（クラス実装）系
-
 ## 練習
 
-```py
+変数名、関数名を整えた。また、空キューに対するpop/peekは例外を投げるようにした
 
+```py
+class MyQueue:
+    def __init__(self):
+        self.input_stack = []
+        self.output_stack = []
+
+    def push(self, x: int):
+        self.input_stack.append(x)
+
+
+    def pop(self):
+        if self.empty():
+            raise IndexError("pop from empty queue")
+
+        if not self.output_stack:
+            self._move_to_out_stack()
+
+        return self.output_stack.pop()
+
+
+    def peek(self):
+        if self.empty():
+            raise IndexError("peek from empty queue")
+
+        if not self.output_stack:
+            self._move_to_out_stack()
+
+        return self.output_stack[-1]
+
+
+    def empty(self):
+        return not self.input_stack and not self.output_stack
+
+
+    def _move_to_out_stack(self):
+        while self.input_stack:
+            self.output_stack.append(self.input_stack.pop())
 ```
+
+### 過去に解いた類題（本リポジトリ内）
+
+- [kth-largest-element-in-a-stream](../kth-largest-element-in-a-stream/main.md) データ構造設計（クラス実装）系
