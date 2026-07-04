@@ -130,3 +130,83 @@ class Solution:
 
         return clones[node]
 ```
+
+## Step2
+
+まとめ
+
+### 各命令が何クロックかかるかは公式ドキュメントにある（が目安）
+
+[huyfififi#32](https://github.com/huyfififi/coding-challenges/pull/32#discussion_r2315641683)
+
+> それぞれの命令に何クロックかかるかは、公式のドキュメントに記載されています。ただ…パイプライン、アウトオブオーダー命令実行、複数の計算ユニットによる同時実行等…複雑です。目安程度に考えておくのが良いと思います。
+
+実行時間の見積もり（1命令 = 1〜10ns、1秒で10^8〜10^9命令）を検証する話。Intelの命令スループット/レイテンシ表が紹介されている。マニュアルの「シナリオ2/3」の見積もりの議論と直結する内容。
+
+### `dict.get(key, default)` は default を常に評価する
+
+[tom4649#65](https://github.com/tom4649/Coding/pull/65)
+
+> `dict.get(key, default)` はデフォルト値を**常に評価**するため、`Node(...)` のような生成コストがある場合は `if key not in dict` で分岐するほうがよい
+
+`original_to_copy.get(child, Node(val=child.val))` だとヒットしても毎回 `Node` を生成してしまい無駄（かつ捨てられるオブジェクトが出る）。`if child in ...` で分岐するのが正解。Python の引数評価タイミングに関わる落とし穴。
+
+### ユーザー定義クラスのインスタンスは id ベースでハッシュされる
+
+[tom4649#65](https://github.com/tom4649/Coding/pull/65)
+
+> ユーザー定義のクラスのインスタンスであるようなオブジェクトはデフォルトでハッシュ可能です。それらは全て (自身を除いて) 比較結果は非等価であり、ハッシュ値は id() より得られます。
+
+`{node: copy}` のように **Node オブジェクトそのものを辞書のキー**にできる理由。同じ val・neighbors でも別インスタンスなら別キーになる。kazuki/huyfififi の解法が `val` ではなく Node 参照をキーにしている（重複 val が無くても安全）根拠。
+
+### `copy.deepcopy` でも解けるが内部で同じことをしている
+
+[tom4649#65](https://github.com/tom4649/Coding/pull/65)
+
+> deepcopyでも解けることに気が付く: sol4.py / 内部で同様のメモ化付き再帰トラバーサルを行っており、汎用性のための型チェック・pickle プロトコルのオーバーヘッドがある
+
+`return copy.deepcopy(node)` の1行で AC する。CPython の `copy.py` を読み、atomic はそのまま返す・memo 辞書で循環参照を防ぐという、まさに今回手書きした構造そのものが実装されていることを確認している。面接では使えないが本質理解として良い。
+
+### DFS再帰 / BFS反復 / スタックに1要素だけ積む版、の解法バリエーション
+
+[kazuki-official#96](https://github.com/kazuki-official/leetcode/pull/96)
+
+> Code2-2 (iterative) … neighbor_unresolved に積みながら、未訪問なら新規生成・訪問済みなら再利用
+
+「スタックにはノードだけ積み、コピー生成と隣接接続をループ内で行う」形
+
+## Step2
+
+ループで解く。キューに入れるのは元のノードのみ
+
+```py
+class Solution:
+    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        if node is None:
+            return None
+
+        node_to_copy = {node: Node(node.val)}
+        queue = deque()
+        queue.append(node)
+        while queue:
+            original = queue.popleft()
+            node_copy = node_to_copy[original]
+            for neighbor in original.neighbors:
+                if neighbor not in node_to_copy:
+                    node_to_copy[neighbor] = Node(neighbor.val)
+                    queue.append(neighbor)
+
+                neighbor_copy = node_to_copy[neighbor]
+                node_copy.neighbors.append(neighbor_copy)
+
+        return node_to_copy[node]
+```
+
+### 過去に解いた類題（本リポジトリ）
+
+- `number-of-islands/` — グリッド上の DFS/BFS 探索
+- `max-area-of-island/` — 同上、訪問管理
+- `course-schedule/` — 有向グラフの探索（サイクル検出）
+- `binary-tree-level-order-traversal/` — BFS キューの基本
+- `construct-binary-tree-from-preorder-and-inorder-traversal/` — 再帰での木の再構築
+- `convert-sorted-array-to-binary-search-tree/` — 再帰での木の生成
