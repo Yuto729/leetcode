@@ -208,3 +208,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# iCloud 同期除外用の実 git ディレクトリ (.git はここへのシンボリックリンク)
+/.git.nosync
