@@ -131,7 +131,7 @@ class Solution:
                 farther.append(point)
 
         if len(closer) >= k:
-            return self.kClosest(left, k)
+            return self.kClosest(closer, k)
 
         if len(closer) + len(equal) >= k:
             return closer + equal[:k - len(closer)]

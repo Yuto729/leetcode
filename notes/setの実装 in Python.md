@@ -1,10 +1,10 @@
 ---
 tags:
-  - Leetcode
-  - Python
-  - データ構造
-  - ハッシュテーブル
-  - 内部実装
+  - leetcode
+  - python
+  - cs/data-structure
+  - algorithm/hash-table
+  - cs/internals
 ---
 
 セットの挿入について解説する

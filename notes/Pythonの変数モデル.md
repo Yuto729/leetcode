@@ -1,11 +1,8 @@
 ---
 tags:
-  - Leetcode
-  - Python
-  - 言語仕様
-  - 名前束縛
-  - メモリモデル
-  - 復習
+  - leetcode
+  - python
+  - cs/memory-model
 ---
 
 Pythonの変数モデルについて整理する。

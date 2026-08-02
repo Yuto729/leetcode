@@ -1,10 +1,9 @@
 ---
 tags:
-  - Leetcode
-  - 面接
-  - パフォーマンス
-  - 見積もり
-  - コンピュータアーキテクチャ
+  - leetcode
+  - interview
+  - cs/performance
+  - cs/computer-architecture
 ---
 
 *(Jeff Dean / Peter Norvig, ~2012)*

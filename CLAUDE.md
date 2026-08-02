@@ -17,6 +17,21 @@
 - `<problem-slug>/main.md` — 解いた問題ごとの思考過程。PR レビュー対象
 - `notes/` — 問題横断のトピックノート（アルゴリズム・Python 内部実装・面接の心構えなど）
 
+## タグ
+
+タグ語彙は vault 側の `TAGS.md`（このリポジトリの1つ上、`daily-life/TAGS.md`）が正典。
+**そこにある語彙からのみ選ぶ。** このリポジトリで主に使うのは以下。
+
+- `leetcode` — 全ノートに付ける
+- `algorithm` / `algorithm/{sort,dfs,bfs,binary-search,two-pointer,sliding-window,prefix-sum,recursion,graph,hash-table,topological-sort,component}`
+- `cs/{data-structure,internals,performance,memory-model,design,complexity}`
+- `python`
+- `review` — 復習したいもの
+- `interview` — 面接の心構え
+
+小文字・英語・ハイフン区切り・単数形、階層は2階層まで。
+**企業名や選考状況を示すタグをここに付けないこと**（PUBLIC リポジトリのため）。
+
 ## Leetcode問題演習
 
 本リポジトリではLeetcodeの問題演習をします。解いた問題はPeer Reviewの形式で他の参加者とレビューをします。

@@ -1,12 +1,12 @@
 ---
 tags:
-  - Leetcode
-  - グラフ
-  - DFS
-  - BFS
-  - 再帰
-  - 連結成分
-  - アルゴリズム
+  - leetcode
+  - algorithm/graph
+  - algorithm/dfs
+  - algorithm/bfs
+  - algorithm/recursion
+  - algorithm/component
+  - algorithm
 ---
 
 # DFS/BFS で visited に追加するタイミング

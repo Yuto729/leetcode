@@ -1,10 +1,10 @@
 ---
 tags:
-  - Leetcode
-  - ソート
-  - アルゴリズム
-  - Python
-  - 内部実装
+  - leetcode
+  - algorithm/sort
+  - algorithm
+  - python
+  - cs/internals
 ---
 
 # Timsort
