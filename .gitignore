@@ -211,3 +211,6 @@ __marimo__/
 
 # iCloud 同期除外用の実 git ディレクトリ (.git はここへのシンボリックリンク)
 /.git.nosync
+
+# macOS
+.DS_Store
