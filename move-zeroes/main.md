@@ -1,3 +1,8 @@
+---
+tags:
+  - algorithm/two-pointer
+---
+
 Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 Note that you must do this in-place without making a copy of the array.
 
@@ -74,10 +79,10 @@ class Solution:
 「最初のゼロ」と交換をすることで答えになる理由:
 ループ中、走査済み領域 `[0, read)` は常に以下の不変条件（invariant）を満たす。
 ```
-[非ゼロ, 非ゼロ, ..., 非ゼロ, 0, 0, ..., 0]
- └─── write 個 ────┘ └─ read - write 個 ─┘
-                    ↑
-                   write (走査済み領域での最初の0の位置)
+[非ゼロ, 非ゼロ, ..., 非ゼロ][0, 0, ..., 0] [未確定領域]
+                                          ↑read
+                          ↑
+                       write (非ゼロとゼロの境界 / 走査済み領域での最初の0の位置)
 ```
 
 つまり「走査済み領域は常に 非ゼロブロック + 0ブロック にソート済み」で、`write` がその境界＝最初の0の位置を指している。
@@ -232,3 +237,7 @@ class Solution:
 - [80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
 - [75. Sort Colors](https://leetcode.com/problems/sort-colors/) (Dutch National Flag, three-way partition)
 - [905. Sort Array By Parity](https://leetcode.com/problems/sort-array-by-parity/)
+
+### 参考
+- [[不変条件と境界条件の設計]]
+- [[sort-colors/main|Sort Colors]]
