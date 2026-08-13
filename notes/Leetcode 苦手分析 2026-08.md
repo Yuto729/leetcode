@@ -33,12 +33,12 @@ tags:
 
 ## 2. ナイーブ解 → 最適化の一段目が自力で越えられない
 
-| 問題 | 日付 | 記述 |
-| --- | --- | --- |
-| [[minimum-window-substrin/main\|Minimum Window Substring]] | 2026-07-25 | TLE →「考えてもわからなかったので AI にヒント」（Two Pointer で1パス） |
-| [[word-ladder/main\|Word Ladder]] | 2025-12-30 | 8000ms →「考えてもわからなかったので Claude にヒント」（逆向き生成 + set） |
-| [[find-k-pairs-with-smallest-sums/main\|Find K Pairs with Smallest Sums]] | 2025-12-06 | 枝刈りしても TLE →「解答を見てみると」 |
-| [[kth-largest-element-in-a-stream/main\|Kth Largest Element in a Stream]] | 2025-12-04 | 3082ms、heap で「途中で詰まってしまった」 |
+| 問題                                                                        | 日付         | 記述                                               |
+| ------------------------------------------------------------------------- | ---------- | ------------------------------------------------ |
+| [[minimum-window-substrin/main\|Minimum Window Substring]]                | 2026-07-25 | TLE →「考えてもわからなかったので AI にヒント」（Two Pointer で1パス）   |
+| [[word-ladder/main\|Word Ladder]]                                         | 2025-12-30 | 8000ms →「考えてもわからなかったので Claude にヒント」（逆向き生成 + set） |
+| [[find-k-pairs-with-smallest-sums/main\|Find K Pairs with Smallest Sums]] | 2025-12-06 | 枝刈りしても TLE →「解答を見てみると」                           |
+| [[kth-largest-element-in-a-stream/main\|Kth Largest Element in a Stream]] | 2025-12-04 | 3082ms、heap で「途中で詰まってしまった」                       |
 
 AC はするが、**計算量を落とすフェーズで止まる**のが一貫パターン。直近 2026-07 でも再発している。
 

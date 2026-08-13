@@ -2,7 +2,6 @@
 date: 2026-08-01
 tags:
   - leetcode
-  - review
 url: https://leetcode.com/problems/partition-equal-subset-sum
 ---
 
