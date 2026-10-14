@@ -44,26 +44,26 @@ AC はするが、**計算量を落とすフェーズで止まる**のが一貫�
 
 ## 3. DP の状態設計（1次元で足りない型）
 
-| 問題 | 日付 | 記述 |
-| --- | --- | --- |
-| [[paint-fence/main\|Paint Fence]] | 2026-03-29 | 「1つの DP 配列だけでは解けなかった」→ AI ヒント |
-| [[longest-increasing-subsequence/main\|Longest Increasing Subsequence]] | 2026-03-31 | 「具体的な解法が思いつかなかったので AI に聞いてみる」 |
-| [[best-time-to-buy-and-sell-stock-ii/main\|Best Time to Buy and Sell Stock II]] | 2026-04-12 | 「複雑に考えて思いつかなかったので解法を AI に教えてもらう」 |
-| [[word-break/main\|Word Break]] | 2026-04-13 | 40分。「詰まった点: for ループの範囲 / 各所スライスのインデックス」 |
-| [[coin-change/main\|Coin Change]] | 2026-04-16 | 26分。`-1` を返す分岐漏れ、初期化ミス |
-| [[maximum-subarray/main\|Maximum Subarray]] | 2026-04-01 | 分割統治（4値マージ）の「理解に時間がかかった」 |
+| 問題                                                                              | 日付         | 記述                                      |
+| ------------------------------------------------------------------------------- | ---------- | --------------------------------------- |
+| [[paint-fence/main\|Paint Fence]]                                               | 2026-03-29 | 「1つの DP 配列だけでは解けなかった」→ AI ヒント           |
+| [[longest-increasing-subsequence/main\|Longest Increasing Subsequence]]         | 2026-03-31 | 「具体的な解法が思いつかなかったので AI に聞いてみる」           |
+| [[best-time-to-buy-and-sell-stock-ii/main\|Best Time to Buy and Sell Stock II]] | 2026-04-12 | 「複雑に考えて思いつかなかったので解法を AI に教えてもらう」        |
+| [[word-break/main\|Word Break]]                                                 | 2026-04-13 | 40分。「詰まった点: for ループの範囲 / 各所スライスのインデックス」 |
+| [[coin-change/main\|Coin Change]]                                               | 2026-04-16 | 26分。`-1` を返す分岐漏れ、初期化ミス                  |
+| [[maximum-subarray/main\|Maximum Subarray]]                                     | 2026-04-01 | 分割統治（4値マージ）の「理解に時間がかかった」                |
 
 遷移そのものより、**遷移に必要な状態を1本の DP 配列に押し込もうとして詰まる**型。
 
 ## 4. 木・再帰 ↔ 反復変換
 
-| 問題 | 日付 | 記述 |
-| --- | --- | --- |
-| [[balanced-binary-tree/main\|Balanced Binary Tree]] | 2026-06-24 | iterative 版が書けず、AI ヒントを4段階（post-order・高さの保持・処理済み判定・打ち切り） |
-| [[split-bst/main\|Split BST]] | 2026-04-28 | 「iterative で解こうとしたが状態遷移が多くわからなかったのでヒント」 |
-| [[lowest-common-ancestor-of-a-binary-tree/main\|Lowest Common Ancestor of a Binary Tree]] | 2026-07-22 | 30分 |
-| [[construct-binary-tree-from-preorder-and-inorder-traversal/main\|Construct Binary Tree from Preorder and Inorder]] | 2026-03-28 | 冒頭から「AI にヒントをもらう」 |
-| [[merge-two-binary-trees/main\|Merge Two Binary Trees]] | 2026-01-01 | 「中々うまくいかなかったので Claude にヒントをもらいながら」 |
+| 問題                                                                                                                  | 日付         | 記述                                                       |
+| ------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------------------------------------------- |
+| [[balanced-binary-tree/main\|Balanced Binary Tree]]                                                                 | 2026-06-24 | iterative 版が書けず、AI ヒントを4段階（post-order・高さの保持・処理済み判定・打ち切り） |
+| [[split-bst/main\|Split BST]]                                                                                       | 2026-04-28 | 「iterative で解こうとしたが状態遷移が多くわからなかったのでヒント」                  |
+| [[lowest-common-ancestor-of-a-binary-tree/main\|Lowest Common Ancestor of a Binary Tree]]                           | 2026-07-22 | 30分                                                      |
+| [[construct-binary-tree-from-preorder-and-inorder-traversal/main\|Construct Binary Tree from Preorder and Inorder]] | 2026-03-28 | 冒頭から「AI にヒントをもらう」                                        |
+| [[merge-two-binary-trees/main\|Merge Two Binary Trees]]                                                             | 2026-01-01 | 「中々うまくいかなかったので Claude にヒントをもらいながら」                       |
 
 再帰は書ける。**明示スタックへの機械的変換（post-order / 訪問済みフラグ）が定着していない**のが 2026-06 でも出ている。
 

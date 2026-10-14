@@ -355,7 +355,7 @@ class Solution:
             nonlocal index
             result = 0
             while index < len(s) and s[index].isdigit():
-                result = result * 1
+                result = result * 10 + int(s[index])
                 index += 1
             return result
 
